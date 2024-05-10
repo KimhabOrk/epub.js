@@ -233,7 +233,7 @@ class DefaultViewManager {
 		this.emit(EVENTS.MANAGERS.RESIZED, {
 			width: this._stageSize.width,
 			height: this._stageSize.height
-		}, epubcfi);
+		}, epubcfi || this.target);
 	}
 
 	createView(section, forceRight) {
@@ -264,6 +264,9 @@ class DefaultViewManager {
 		if (target === section.href || isNumber(target)) {
 			target = undefined;
 		}
+
+		// If the window is resized before rendered, call resize with original target
+		this.target = target
 
 		// Check to make sure the section we want isn't already shown
 		var visible = this.views.find(section);
@@ -896,6 +899,8 @@ class DefaultViewManager {
 
 		this.scrollTop = scrollTop;
 		this.scrollLeft = scrollLeft;
+
+		this.target = undefined
 
 		if(!this.ignore) {
 			this.emit(EVENTS.MANAGERS.SCROLL, {
