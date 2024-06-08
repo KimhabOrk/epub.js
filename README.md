@@ -43,7 +43,7 @@ Create the new ePub, and then render it to that element:
 ```html
 <script>
   var book = ePub("url/to/book/package.opf");
-  var rendition = book.renderTo("area", {width: 600, height: 400});
+  var rendition = book.renderTo("area", { width: 600, height: 400 });
   var displayed = rendition.display();
 </script>
 ```
@@ -65,6 +65,7 @@ The default manager only displays a single section at a time.
 ```js
 book.renderTo("area", { method: "continuous", width: "100%", height: "100%" });
 ```
+
 [View example](http://futurepress.github.io/epub.js/examples/continuous-scrolled.html)
 
 The continuous manager will display as many sections as need to fill the screen, and preload the next section offscreen. This enables seamless swiping / scrolling between pages on mobile and desktop, but is less performant than the default method.
@@ -72,6 +73,7 @@ The continuous manager will display as many sections as need to fill the screen,
 ## Flow Overrides
 
 ### Auto (Default)
+
 `book.renderTo("area", { flow: "auto", width: "900", height: "600" });`
 
 Flow will be based on the settings in the OPF, defaults to `paginated`.
@@ -90,7 +92,7 @@ Scrolled: `book.renderTo("area", { flow: "scrolled-doc" });`
 
 ## Scripted Content
 
-[Scripted content](https://www.w3.org/TR/epub-33/#sec-scripted-content), JavasScript the ePub HTML content, is disabled by default due to the potential for executing malicious content. 
+[Scripted content](https://www.w3.org/TR/epub-33/#sec-scripted-content), JavasScript the ePub HTML content, is disabled by default due to the potential for executing malicious content.
 
 This is done by sandboxing the iframe the content is rendered into, though it is still recommended to sanitize the ePub content server-side as well.
 
@@ -101,7 +103,7 @@ If a trusted ePub contains interactivity, it can be enabled by passing `allowScr
   var rendition = book.renderTo("area", {
     width: 600,
     height: 400,
-    allowScriptedContent: true
+    allowScriptedContent: true,
   });
 </script>
 ```
@@ -132,11 +134,11 @@ npm start
 
 ## Examples
 
-+ [Spreads](http://futurepress.github.io/epub.js/examples/spreads.html)
-+ [Scrolled](http://futurepress.github.io/epub.js/examples/scrolled.html)
-+ [Swipe](http://futurepress.github.io/epub.js/examples/swipe.html)
-+ [Input](http://futurepress.github.io/epub.js/examples/input.html)
-+ [Highlights](http://futurepress.github.io/epub.js/examples/highlights.html)
+- [Spreads](http://futurepress.github.io/epub.js/examples/spreads.html)
+- [Scrolled](http://futurepress.github.io/epub.js/examples/scrolled.html)
+- [Swipe](http://futurepress.github.io/epub.js/examples/swipe.html)
+- [Input](http://futurepress.github.io/epub.js/examples/input.html)
+- [Highlights](http://futurepress.github.io/epub.js/examples/highlights.html)
 
 [View All Examples](http://futurepress.github.io/epub.js/examples/)
 
@@ -175,29 +177,28 @@ Hooks require an event to register to and a can return a promise to block until 
 Example hook:
 
 ```javascript
-rendition.hooks.content.register(function(contents, view) {
+rendition.hooks.content.register(function (contents, view) {
+  var elements = contents.document.querySelectorAll("[video]");
+  var items = Array.prototype.slice.call(elements);
 
-    var elements = contents.document.querySelectorAll('[video]');
-    var items = Array.prototype.slice.call(elements);
-
-    items.forEach(function(item){
-      // do something with the video item
-    });
-
-})
+  items.forEach(function (item) {
+    // do something with the video item
+  });
+});
 ```
 
 The parts of the rendering process that can be hooked into are below.
 
 ```js
-book.spine.hooks.serialize // Section is being converted to text
-book.spine.hooks.content // Section has been loaded and parsed
-rendition.hooks.render // Section is rendered to the screen
-rendition.hooks.content // Section contents have been loaded
-rendition.hooks.unloaded // Section contents are being unloaded
+book.spine.hooks.serialize; // Section is being converted to text
+book.spine.hooks.content; // Section has been loaded and parsed
+rendition.hooks.render; // Section is rendered to the screen
+rendition.hooks.content; // Section contents have been loaded
+rendition.hooks.unloaded; // Section contents are being unloaded
 ```
 
 ## Reader
+
 The reader has moved to its own repo at: https://github.com/futurepress/epubjs-reader/
 
 ## Additional Resources
@@ -210,7 +211,7 @@ IRC Server: freenode.net Channel: #epub.js
 
 Follow us on twitter: @Epubjs
 
-+ http://twitter.com/#!/Epubjs
+- http://twitter.com/#!/Epubjs
 
 ## Other
 

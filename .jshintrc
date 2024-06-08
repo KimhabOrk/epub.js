@@ -2,10 +2,8 @@
   "browser": true,
   "devel": true,
   "worker": true,
-
   "trailing": true,
   "strict": false,
-
   "boss": true,
   "funcscope": true,
   "globalstrict": true,
@@ -14,10 +12,9 @@
   "nonstandard": true,
   "sub": true,
   "validthis": true,
-
   "globals": {
     "_": false,
-    "define" : false,
-    "module" : false
+    "define": false,
+    "module": false
   }
 }
