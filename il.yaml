@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://schema-validator.imaginelearning.tech/il.yaml/v2.0.json
+
+meta:
+    owner: litfam
+    trackingId: 87b2338d-3ea4-45cc-bd63-73d1f4a73a6c
+
+# catalog:
+
+spartanzBot:
+    fileChecker:
+        enabled: true
+        comment: true
