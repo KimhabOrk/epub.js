@@ -344,13 +344,13 @@ class DefaultViewManager {
 		if(!this.isPaginated) {
 			distY = offset.top;
 		} else {
-			distX = Math.floor(offset.left / this.layout.delta) * this.layout.delta;
+			distX = Math.round(offset.left / this.layout.delta) * this.layout.delta;
 
 			if (distX + this.layout.delta > this.container.scrollWidth) {
 				distX = this.container.scrollWidth - this.layout.delta;
 			}
 
-			distY = Math.floor(offset.top / this.layout.delta) * this.layout.delta;
+			distY = Math.round(offset.top / this.layout.delta) * this.layout.delta;
 
 			if (distY + this.layout.delta > this.container.scrollHeight) {
 				distY = this.container.scrollHeight - this.layout.delta;
@@ -528,7 +528,7 @@ class DefaultViewManager {
 						this.settings.axis === "horizontal" &&
 						this.settings.direction === "rtl" &&
 						this.settings.rtlScrollType === "default") {
-						
+
 						this.scrollTo(this.container.scrollWidth, 0, true);
 					}
 					this.views.show();
@@ -675,7 +675,7 @@ class DefaultViewManager {
 		let pageWidth = (container.width < window.innerWidth) ? container.width : window.innerWidth;
 		let vertical = (this.settings.axis === "vertical");
 		let rtl =  (this.settings.direction === "rtl");
-		
+
 		let offset = 0;
 		let used = 0;
 
@@ -779,7 +779,7 @@ class DefaultViewManager {
 			let startPage = Math.floor(start / this.layout.pageWidth);
 			let pages = [];
 			let endPage = Math.floor(end / this.layout.pageWidth);
-			
+
 			// start page should not be negative
 			if (startPage < 0) {
 				startPage = 0;

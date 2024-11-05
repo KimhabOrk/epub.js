@@ -1,11 +1,11 @@
 {
-  "name": "epubjs",
+  "name": "@iamginelearning/epubjs",
   "version": "0.3.94",
   "description": "Parse and Render Epubs",
   "main": "lib/index.js",
   "module": "src/index.js",
   "types": "types/index.d.ts",
-  "repository": "https://github.com/futurepress/epub.js",
+  "repository": "https://github.com/ImagineLearning/epub.js",
   "directories": {
     "test": "test"
   },
